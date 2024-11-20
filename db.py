@@ -1,6 +1,6 @@
 import pandas as pd
 import urllib
-from pathlib import Path
+import os
 from sqlalchemy import create_engine
 
 # returns engine with microsoft access dialect
@@ -16,11 +16,12 @@ def access_engine(access_db):
 
 # creates connection to database file
 def create_access_engine():
-    db_path = Path("/digital_seed_library/cnuw_digital_seed_library_db.accdb")
-    engine = access_engine(db_path)
+    directory = os.getcwd()
+    db_path = (r"\cnuw_digital_seed_library_db.accdb")
+    engine = access_engine(directory + db_path)
     return engine
 
-print(Path("/digital_seed_library/cnuw_digital_seed_library_db.accdb"))
+print(os.getcwd())
 
 # SEED CHARACTERISTICS DATAFRAMES
 # SEED TYPES
